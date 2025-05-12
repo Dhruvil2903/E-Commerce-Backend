@@ -24,6 +24,7 @@ This is a backend system for an E-Commerce application built using **Spring Boot
 # API Gateway
 - Central entry point for all client requests.
 - Routes traffic to appropriate microservices.
+- User global filteration by implementing `GlobalFiltering`.
 - Configured with:
   - Load Balancing (via Eureka Client)
   - Strip Prefixing
@@ -43,6 +44,7 @@ This is a backend system for an E-Commerce application built using **Spring Boot
 - Java 21
 - Spring Boot
 - Spring Cloud (Eureka, Gateway)
+- Spring Data JPA
 - Spring Security
 - JWT (jjwt)
 - Maven
