@@ -48,6 +48,7 @@ This is a backend system for an E-Commerce application built using **Spring Boot
 - Spring Security
 - JWT (jjwt)
 - Maven
+- Postman (for checking API)
 - MySQL (as the database)
 
 # Project Structure
