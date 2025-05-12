@@ -66,12 +66,12 @@ E-Commerce-Backend
    - `order-service`
 4. Access via: `http://localhost:8080` (Gateway entry)
    
-## Example JWT Flow
+# JWT Flow
 1. User logs in via `/api/auth/login`
 2. Receives a JWT token
 3. Send the token as a `Bearer` token in the `Authorization` header for protected endpoints
 
-## Future Enhancements
+# Future Enhancements
 - Add payment service
 - Implement rate limiting
 - Use Kafka for event-driven communication
