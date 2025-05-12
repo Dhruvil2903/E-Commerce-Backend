@@ -75,8 +75,9 @@ E-Commerce-Backend
 3. Send the token as a `Bearer` token in the `Authorization` header for protected endpoints
 
 # Future Enhancements
-- Add payment service
+- payment service
 - Implement rate limiting
 - Use Kafka for event-driven communication
 - Dockerize all services
+- Next implementations will be added.
 
