@@ -1,0 +1,6 @@
+package com.example.userEnum;
+
+public enum Role {
+    USER,
+    ADMIN
+}

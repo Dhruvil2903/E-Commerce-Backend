@@ -1,0 +1,8 @@
+package com.order.customException;
+
+public class OrderNotFound extends Exception{
+
+	public OrderNotFound(String name) {
+		
+	}
+}

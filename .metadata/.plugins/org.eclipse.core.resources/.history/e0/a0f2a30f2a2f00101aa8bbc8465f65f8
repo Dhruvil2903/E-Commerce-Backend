@@ -1,0 +1,5 @@
+package secretKeyGenerator;
+
+public class SecreteKeyGenerator {
+
+}

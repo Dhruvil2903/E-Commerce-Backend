@@ -1,0 +1,73 @@
+package com.user.Controller;
+
+import java.util.Optional;
+
+import org.apache.hc.client5.http.auth.InvalidCredentialsException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.user.CustomException.NoUserFoundException;
+import com.user.CustomException.UserAlreadyExistException;
+import com.user.Security.JwtUtil;
+import com.user.Service.UserService;
+import com.user.UserModel.AuthResponse;
+import com.user.UserModel.User;
+
+@RestController
+@RequestMapping("/api/auth")
+//@CrossOrigin(origins = "http://localhost:5173")
+public class UserController {
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private JwtUtil jwtUtil;
+
+	@Autowired
+	private AuthResponse authResponse;
+
+	@PostMapping("/login")
+	public ResponseEntity<?> login(@RequestBody User user) {
+		try {
+			Optional<User> loggedInUser = userService.login(user);
+			String token = jwtUtil.generateToken(loggedInUser.get().getUsername());
+			return ResponseEntity.ok(new AuthResponse(token));
+//              return ResponseEntity.status(HttpStatus.OK).body(token);
+		} catch (NoUserFoundException | InvalidCredentialsException e) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+		}
+	}
+
+	@PostMapping("/register")
+	public ResponseEntity<?> register(@RequestBody User user) {
+		try {
+			User registeredUser = userService.register(user);
+
+			return ResponseEntity.status(HttpStatus.OK).body(registeredUser);
+		} catch (UserAlreadyExistException e) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+		}
+	}
+	public static class AuthResponse {
+	    private String token;
+
+	    public AuthResponse(String token) {
+	        this.token = token;
+	    }
+
+	    public String getToken() {
+	        return token;
+	    }
+
+	    public void setToken(String token) {
+	        this.token = token;
+	    }
+
+}

@@ -1,0 +1,10 @@
+package com.order.Entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "oorder-service")
+public class OrderService {
+
+}

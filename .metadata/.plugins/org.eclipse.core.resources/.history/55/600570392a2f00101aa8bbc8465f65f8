@@ -1,0 +1,27 @@
+package com.api_gateway.Filter;
+
+import java.security.Key;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
+
+public class JwtUtil {
+	
+	private String SECRET = "PU/BIMsbouuT5TSKHQ6FsJCZM77jJqxjcpNnHVr6CQErtjFIKiaunbI4oCV6USLzrsX8lQ89UmrX+zyL1thKZA==" ;
+	
+	@PostConstruct
+	public void init() {
+		this.key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+	}
+	
+	public String validateToken(String token) {
+		return Jwts.parserBuilder().setSigningKey(SECRET)
+				.build()
+				.parseClaimsJws(token)
+				.getBody()
+				.getSubject();
+		
+	}
+}

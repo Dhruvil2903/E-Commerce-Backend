@@ -1,0 +1,25 @@
+package com.api_gateway.Filter;
+
+
+
+import io.jsonwebtoken.Jwts;
+
+
+public class JwtUtil {
+	
+	
+
+	
+	private String SECRET = "PU/BIMsbouuT5TSKHQ6FsJCZM77jJqxjcpNnHVr6CQErtjFIKiaunbI4oCV6USLzrsX8lQ89UmrX+zyL1thKZA==" ;
+	
+	
+	
+	public String validateToken(String token) {
+		return Jwts.parserBuilder().setSigningKey(SECRET)
+				.build()
+				.parseClaimsJws(token)
+				.getBody()
+				.getSubject();
+		
+	}
+}

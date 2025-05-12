@@ -1,0 +1,33 @@
+spring.application.name=Api-Gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true        # optional: auto-create routes for every service
+      routes:
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/auth/**     # matches /auth/**
+          filters:
+            - StripPrefix=1     # drop the first path segment
+
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/products/**  # matches /products/**
+          filters:
+            - StripPrefix=1
+
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/orders/**    # matches /orders/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

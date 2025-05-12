@@ -1,0 +1,19 @@
+package com.api_gateway.Filter;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+
+public class JwtUtil {
+	
+	private Keys key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+	
+	public String validateToken(String token) {
+		return Jwts.parserBuilder().setSigningKey(SECRET)
+				.build()
+				.parseClaimsJws(token)
+				.getBody()
+				.getSubject();
+		
+	}
+}

@@ -1,0 +1,12 @@
+package com.order.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.order.Entity.OrderService;
+
+public interface OrderRepository extends JpaRepository<OrderService, Integer>{
+
+	public Optional<OrderService> findByOrderID(int id); 
+}

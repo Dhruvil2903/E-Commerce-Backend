@@ -1,0 +1,16 @@
+package com.user.FeignClient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.user.FeignInterceptor.FeignClientInterceptor;
+import com.user.UserModel.Product;
+
+@FeignClient(name = "product-service", url = "http://localhost:8082" , configuration = FeignClientInterceptor.class)
+public interface ProductServiceClient {
+		
+	 @PostMapping("/add")
+	    Product addDefaultProduct(@RequestBody Product product);
+}	

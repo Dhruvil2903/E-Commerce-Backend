@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: User-Service
+  datasource:
+    url: jdbc:mysql://localhost:3306/user
+    username: root
+    password: Dhruvil9094
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+eureka:
+  client:
+    serviceurl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+jwt:
+  secret: mysecretkeymysecretkeymysecretkey
+  expiration: 3600000  # 1 hour

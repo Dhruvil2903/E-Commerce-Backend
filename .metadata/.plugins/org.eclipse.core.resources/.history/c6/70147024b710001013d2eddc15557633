@@ -1,0 +1,6 @@
+package com.example.userEnum;
+
+public enum UserEnum {
+    USER,
+    ADMIN
+}

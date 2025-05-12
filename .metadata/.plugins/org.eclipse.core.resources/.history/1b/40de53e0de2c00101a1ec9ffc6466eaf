@@ -1,0 +1,28 @@
+package com.order.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.order.Entity.Order;
+import com.order.customException.OrderAlreadyExist;
+import com.order.repository.OrderRepository;
+
+@Service
+public class OrderService {
+	
+	@Autowired
+	private OrderRepository orderRepository;
+	
+
+	public Optional<?> addOrder(Order order) throws OrderAlreadyExist{
+		Optional<Order> orderExist = orderRepository.findByOrderName(order.getName());
+		
+		if(orderExist.isPresent()) {
+			throw new OrderAlreadyExist("Order is already Exist");
+		}
+		return orderRepository.save(order);
+	}
+	
+}
