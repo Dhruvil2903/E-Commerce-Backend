@@ -16,7 +16,7 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
+	private String orderName;
 	private double price;
 	private Date date;
 	private OrderStatus orderStatus;
@@ -29,11 +29,11 @@ public class Order {
 	}
 
 	public String getName() {
-		return name;
+		return orderName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String orderName) {
+		this.orderName = orderName;
 	}
 
 	public double getPrice() {

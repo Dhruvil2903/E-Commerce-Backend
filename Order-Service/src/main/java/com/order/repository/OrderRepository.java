@@ -10,5 +10,5 @@ import com.order.Entity.Order;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer>{
 
-	public Optional<Order> findByOrderName(String name); 
+	public Optional<Order> findByOrderName(String orderName); 
 }

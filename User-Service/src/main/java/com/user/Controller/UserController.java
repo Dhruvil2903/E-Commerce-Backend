@@ -34,7 +34,7 @@ public class UserController {
 	public ResponseEntity<?> login(@RequestBody User user) {
 		try {
 			Optional<User> loggedInUser = userService.login(user);
-			String token = jwtUtil.generateToken(loggedInUser.get().getUsername());
+			String token = jwtUtil.generateToken(loggedInUser.get());
 			return ResponseEntity.ok(new AuthResponse(token));
 //              return ResponseEntity.status(HttpStatus.OK).body(token);
 		} catch (NoUserFoundException | InvalidCredentialsException e) {

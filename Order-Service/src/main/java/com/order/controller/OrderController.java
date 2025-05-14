@@ -20,28 +20,28 @@ import com.order.customException.OrderNotFoundException;
 import com.order.service.OrderService;
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping("/api/orders")
 public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
 
-	@PostMapping("/add")
+	@PostMapping("/createOrder")
 	public ResponseEntity<?> addOrder(@RequestBody Order order) {
 
 		try {
 			Order addingOrder = orderService.addOrder(order);
 
-			return ResponseEntity.status(HttpStatus.SC_CREATED).body(addingOrder);
+			return ResponseEntity.status(HttpStatus.SC_OK).body(addingOrder);
 		} catch (OrderAlreadyExistException e) {
 			return ResponseEntity.status(HttpStatus.SC_CONFLICT).body(e.getMessage());
 		}
 	}
 
 	@GetMapping("/{orderName}")
-	public ResponseEntity<?> getOrder(@PathVariable String name) {
+	public ResponseEntity<?> getOrder(@PathVariable String orderName) {
 		try {
-			Order getOrder = orderService.getOrder(name);
+			Order getOrder = orderService.getOrder(orderName);
 
 			return ResponseEntity.status(org.springframework.http.HttpStatus.OK).body(getOrder);
 		} catch (OrderNotFoundException e) {
@@ -50,9 +50,9 @@ public class OrderController {
 	}
 
 	@PutMapping("/{ordername}")
-	public ResponseEntity<?> updateOrder(@PathVariable String name, @RequestBody Order order) {
+	public ResponseEntity<?> updateOrder(@PathVariable String orderName, @RequestBody Order order) {
 		try {
-			Order orderUpdate = orderService.updateOrder(name, order);
+			Order orderUpdate = orderService.updateOrder(orderName, order);
 
 			return ResponseEntity.status(org.springframework.http.HttpStatus.OK).body(orderUpdate);
 		} catch (OrderNotFoundException e) {
@@ -61,9 +61,9 @@ public class OrderController {
 	}
 
 	@DeleteMapping("/{ordername}")
-	public ResponseEntity<?> deleteOrder(@PathVariable String name) {
+	public ResponseEntity<?> deleteOrder(@PathVariable String orderName) {
 		try {
-			Order deleteOrder = orderService.deleteOrder(name);
+			Order deleteOrder = orderService.deleteOrder(orderName);
 			return ResponseEntity.status(org.springframework.http.HttpStatus.OK).body(deleteOrder);
  
 		} catch (OrderNotFoundException e) {

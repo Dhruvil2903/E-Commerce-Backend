@@ -32,6 +32,7 @@ public class UserService {
 		if (!passwordEncoder.matches(user.getPassword(), user2.getPassword())) {
 			throw new InvalidCredentialsException("Invalid credintials");
 		}
+		
 		System.out.println("Login successfull");
 		return existingUser;
 

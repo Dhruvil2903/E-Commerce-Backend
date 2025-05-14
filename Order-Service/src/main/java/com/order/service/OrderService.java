@@ -26,18 +26,18 @@ public class OrderService {
 		// if not then print message
 		System.out.println("Order Saved Successfully");
 		// set orderStatus
-		order.setOrderStatus(OrderStatus.pending);
+		order.setOrderStatus(OrderStatus.COMPLETED);
 		return orderRepository.save(order);// save order
 
 	}
 
-	public Order getOrder(String name) throws OrderNotFoundException {
+	public Order getOrder(String orderName) throws OrderNotFoundException {
 
-		return orderRepository.findByOrderName(name).orElseThrow(() -> new OrderNotFoundException("Order is not found"));
+		return orderRepository.findByOrderName(orderName).orElseThrow(() -> new OrderNotFoundException("Order is not found"));
 	}
 
-	public Order updateOrder(String name, Order orderDetails) throws OrderNotFoundException {
-		Optional<Order> orderFound = orderRepository.findByOrderName(name);
+	public Order updateOrder(String orderName, Order orderDetails) throws OrderNotFoundException {
+		Optional<Order> orderFound = orderRepository.findByOrderName(orderName);
 
 		if (orderFound.isEmpty()) {
 			throw new OrderNotFoundException("Order is not found");
@@ -52,8 +52,8 @@ public class OrderService {
 		return orderRepository.save(order);
 	}
 
-	public Order deleteOrder(String name) throws OrderNotFoundException {
-		Optional<Order> findOrder = orderRepository.findByOrderName(name);
+	public Order deleteOrder(String orderName) throws OrderNotFoundException {
+		Optional<Order> findOrder = orderRepository.findByOrderName(orderName);
 
 		if (findOrder.isEmpty()) {
 			throw new OrderNotFoundException("Order is not found");

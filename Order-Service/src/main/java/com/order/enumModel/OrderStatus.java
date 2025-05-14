@@ -2,6 +2,6 @@ package com.order.enumModel;
 
 public enum OrderStatus {
 
-	completed,
-	pending
+	COMPLETED,
+	PENDING
 }
