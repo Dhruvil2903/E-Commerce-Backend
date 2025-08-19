@@ -1,8 +1,0 @@
-package com.order.customException;
-
-public class OrderNotFound extends Exception{
-
-	public OrderNotFound(tring name) {
-		// TODO Auto-generated constructor stub
-	}
-}

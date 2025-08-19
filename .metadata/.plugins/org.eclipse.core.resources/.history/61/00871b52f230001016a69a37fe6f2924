@@ -1,9 +1,0 @@
-package com.order.security;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-public class SecurityConfig {
-
-	@Autowired
-	private JwtOrderFilter jwtOrderFilter;
-}

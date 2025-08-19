@@ -1,5 +1,0 @@
-package com.order.security;
-
-public class JwtOrderFilter {
-
-}

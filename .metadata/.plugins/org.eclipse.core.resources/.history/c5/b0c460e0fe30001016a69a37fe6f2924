@@ -1,7 +1,0 @@
-package com.order.enumModel;
-
-public enum OrderStatus {
-
-	completed,
-	PENDING
-}

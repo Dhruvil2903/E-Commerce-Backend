@@ -24,7 +24,7 @@ public class UserService {
 
 	public Optional<User> login(User user) throws NoUserFoundException, InvalidCredentialsException {
 		Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
-
+ 
 		if (!existingUser.isPresent()) {
 			throw new NoUserFoundException("User does not exist");
 		}
@@ -35,8 +35,8 @@ public class UserService {
 		
 		System.out.println("Login successfull");
 		return existingUser;
-
 	}
+	
 
 	public User register(User user) throws UserAlreadyExistException {
 //		Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
