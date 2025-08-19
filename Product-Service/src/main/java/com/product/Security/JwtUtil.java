@@ -10,7 +10,7 @@ import io.jsonwebtoken.Jwts;
 public class JwtUtil {
 
 	
-	private String key = "PU/BIMsbouuT5TSKHQ6FsJCZM77jJqxjcpNnHVr6CQErtjFIKiaunbI4oCV6USLzrsX8lQ89UmrX+zyL1thKZA==";
+	private String key = "";
 
 	public String validateToken(String token) {
 
