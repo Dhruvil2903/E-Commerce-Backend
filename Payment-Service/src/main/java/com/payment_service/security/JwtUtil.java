@@ -1,13 +1,31 @@
 package com.payment_service.security;
 
+import java.nio.charset.StandardCharsets;
+
+import javax.crypto.SecretKey;
+
+import org.springframework.beans.factory.annotation.Value;
+
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 
 public class JwtUtil {
 
-	private String key = "";
+	@Value("${jwt.secret}")
+	private String secretKeyString;
 	
-	public String validateToken(String token) {
+	 private SecretKey getSigningKey() {
+	        return Keys.hmacShaKeyFor(secretKeyString.getBytes(StandardCharsets.UTF_8));
+	    }
 
-		return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
-	}
+	    public String validateToken(String token) {
+	        return Jwts.parserBuilder()
+	                .setSigningKey(getSigningKey())
+	                .build()
+	                .parseClaimsJws(token)
+	                .getBody()
+	                .getSubject();
+	    }
+	
+	
 }

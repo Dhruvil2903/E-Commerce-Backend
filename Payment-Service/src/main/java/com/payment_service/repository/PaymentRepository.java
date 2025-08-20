@@ -11,8 +11,6 @@ import com.payment_service.entity.Payment;
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, Integer> {
 
-	 Optional<Payment> findByPayerNameAndPaymentAmountAndPaymentDateBetween(
-		        String payerName, Double paymentAmount, LocalDateTime startDate, LocalDateTime endDate
-		    );
+	  Optional<Payment> findByPaymentId(String paymentId);
 }
 	

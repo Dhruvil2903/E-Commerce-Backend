@@ -1,26 +1,33 @@
 package com.payment_service.dto;
 
-
 public class PaymentRequest {
 
-	
-	private String payerName;
-	private Double paymentAmount;
+	private String userId;
+	private double amount;
+	private String method;
 
-	public String getPayerName() {
-		return payerName;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setPayerName(String payerName) {
-		this.payerName = payerName;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public Double getPaymentAmount() {
-		return paymentAmount;
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setPaymentAmount(Double paymentAmount) {
-		this.paymentAmount = paymentAmount;
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
 	}
 
 }

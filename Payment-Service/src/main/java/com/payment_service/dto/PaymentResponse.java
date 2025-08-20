@@ -1,46 +1,46 @@
 package com.payment_service.dto;
 
-import java.time.LocalDateTime;
 
 public class PaymentResponse {
 
-	private int id;
-	private String transactionId;
-	private String payerName;
-	private Double paymentAmount;
+	private String paymentId;
+	private String userId;
+	private double amount;
 	private String status;
-	private LocalDateTime paymentDate;
+	private String message;
+	
 
-	public int getId() {
-		return id;
+	public PaymentResponse(String paymentId, String userId, double amount, String status, String message) {
+		super();
+		this.paymentId = paymentId;
+		this.userId = userId;
+		this.amount = amount;
+		this.status = status;
+		this.message = message;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getPaymentId() {
+		return paymentId;
 	}
 
-	public String getTransactionId() {
-		return transactionId;
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
 	}
 
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
+	public String getUserId() {
+		return userId;
 	}
 
-	public String getPayerName() {
-		return payerName;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public void setPayerName(String payerName) {
-		this.payerName = payerName;
+	public double getAmount() {
+		return amount;
 	}
 
-	public Double getPaymentAmount() {
-		return paymentAmount;
-	}
-
-	public void setPaymentAmount(Double paymentAmount) {
-		this.paymentAmount = paymentAmount;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
 	public String getStatus() {
@@ -51,11 +51,12 @@ public class PaymentResponse {
 		this.status = status;
 	}
 
-	public LocalDateTime getPaymentDate() {
-		return paymentDate;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setPaymentDate(LocalDateTime paymentDate) {
-		this.paymentDate = paymentDate;
+	public void setMessage(String message) {
+		this.message = message;
 	}
+
 }

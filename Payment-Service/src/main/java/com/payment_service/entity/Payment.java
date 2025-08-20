@@ -2,8 +2,6 @@ package com.payment_service.entity;
 
 import java.time.LocalDateTime;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,66 +17,78 @@ public class Payment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String transactionId;
-	
-	@Column(nullable = false)
-	private String payerName;
-	
-	private LocalDateTime paymentDate;
-	
-	@Column(nullable = false)
-	private Double paymentAmount;
-	
-	@Enumerated(EnumType.STRING)
-	private Status status;
+	private Long id;
 
-	public int getId() {
+	private String paymentId; // unique payment reference
+	private String userId;
+	private double amount;
+	private String method; // CARD, UPI, WALLET, etc.
+	private String status; // PENDING, SUCCESS, FAILED, REFUNDED
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getPayerName() {
-		return payerName;
+	public String getPaymentId() {
+		return paymentId;
 	}
 
-	public void setPayerName(String payerName) {
-		this.payerName = payerName;
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
 	}
 
-	public LocalDateTime getPaymentDate() {
-		return paymentDate;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setPaymentDate(LocalDateTime paymentDate) {
-		this.paymentDate = paymentDate;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public Status getStatus() {
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status pending) {
-		this.status = pending;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
-	public Double getPaymentAmount() {
-		return paymentAmount;
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setPaymentAmount(Double paymentAmount) {
-		this.paymentAmount = paymentAmount;
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	public String getTransactionId() {
-		return transactionId;
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 }
